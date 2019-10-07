@@ -1,15 +1,20 @@
 package com.example.myhouse;
 
+import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.myhouse.CardApi.CardAPITest;
+import com.example.myhouse.CardApi.util.CommonConstant;
+import com.example.myhouse.CardApi.util.RequestToken;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+
 
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
@@ -40,8 +45,10 @@ public class MainActivity extends AppCompatActivity {
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        CardAPITest cardAPITest = new CardAPITest();
-        cardAPITest.test();
+        Intent intent = new Intent(this, folderActivity
+                .class);
+        startActivity(intent);
+
     }
 
 }

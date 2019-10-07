@@ -1,4 +1,8 @@
-package com.example.myhouse.CardApi;
+package com.example.myhouse.CardApi.util;
+
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import java.security.InvalidKeyException;
 import java.security.KeyFactory;
@@ -30,7 +34,7 @@ public class RSAUtil {
 	 * Public Key로 RSA 암호화를 수행합니다.
 	 * 
 	 * @param plainText 암호화할 평문입니다.
-	 * @param publicKey 공개키 입니다.
+	 * @param base64PublicKey 공개키 입니다.
 	 * @return 암호화된 데이터 String
 	 * @throws NoSuchAlgorithmException 
 	 * @throws InvalidKeySpecException 
@@ -40,6 +44,7 @@ public class RSAUtil {
 	 * @throws IllegalBlockSizeException 
 	 * 
 	 */
+	@RequiresApi(api = Build.VERSION_CODES.O)
 	public static String encryptRSA(String plainText, String base64PublicKey)
 			throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException,
 				InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
