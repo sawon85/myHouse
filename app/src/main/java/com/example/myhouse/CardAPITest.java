@@ -1,5 +1,16 @@
 package com.example.myhouse;
 
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.util.HashMap;
+
+import org.apache.commons.lang3.StringUtils;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class CardAPITest {
 
     public void test(){
