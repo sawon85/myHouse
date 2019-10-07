@@ -1,4 +1,4 @@
-package com.example.myhouse;
+package com.example.myhouse.CardApi;
 
 public class CardAPITest {
 

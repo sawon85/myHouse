@@ -2,6 +2,7 @@ package com.example.myhouse;
 
 import android.os.Bundle;
 
+import com.example.myhouse.CardApi.CardAPITest;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,15 +20,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
+                case R.id.map:
                     mTextMessage.setText(R.string.title_home);
                     return true;
-                case R.id.navigation_dashboard:
+                case R.id.coupon:
                     mTextMessage.setText(R.string.title_dashboard);
                     return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
+
             }
             return false;
         }
