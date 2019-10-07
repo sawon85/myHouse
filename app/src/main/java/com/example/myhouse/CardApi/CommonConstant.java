@@ -63,16 +63,16 @@ public class CommonConstant {
 	
 	
 	/**	CODEF로부터 발급받은 클라이언트 아이디	*/
-	public static final String CLIENT_ID 	= "CODEF로부터 발급받은 클라이언트 아이디";						
+	public static final String CLIENT_ID 	= "558073ff-5057-4711-9f7b-b80f93f5ff91";
 	
 	/**	CODEF로부터 발급받은 시크릿 키	*/
-	public static final String SECERET_KEY 	= "CODEF로부터 발급받은 시크릿 키";
+	public static final String SECERET_KEY 	= "32f2abdc-8944-4d7e-9241-f2251c031b59";
 	
 	/**	CODEF로부터 발급받은 퍼블릭 키	*/
 	public static final String PUBLIC_KEY 	= "CODEF로부터 발급받은 퍼블릭 키";
 	
 	/**	OAUTH2.0 토큰 샘플	*/
-	public static String ACCESS_TOKEN = "";
+	public static String ACCESS_TOKEN = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXJ2aWNlX3R5cGUiOiIxIiwic2NvcGUiOlsicmVhZCJdLCJzZXJ2aWNlX25vIjoiMDAwMDAwMjc4MDAxIiwiZXhwIjoxNTcxMDc4MjM5LCJhdXRob3JpdGllcyI6WyJJTlNVUkFOQ0UiLCJQVUJMSUMiLCJCQU5LIiwiRVRDIiwiU1RPQ0siLCJDQVJEIl0sImp0aSI6ImU4MDA2NmM4LTEwODEtNDQ0ZC1hN2NjLWU5YThiMTUxZGJmZSIsImNsaWVudF9pZCI6IjU1ODA3M2ZmLTUwNTctNDcxMS05ZjdiLWI4MGY5M2Y1ZmY5MSJ9.WaR_A3RjW-3AYzWGHqUGNOKq7AeASnpmqQRvNPnjx_-bkEHT9464dnxkANgOLdgDcruqclkGmYCNDu9e22ncmWZoptrFgfQMp2DEkruHcAExTtWuVXkai4uuRKKfQ4aj0gviA8rzPnuAYTkg08kNR9Evxm1U6V1Z1ainQwPZv8LfN4NriiwB1XqJMeOjXc2JvqB1lQLh5MdYeUqwfdJrLPUBufKSZrK9puEvrl73NYl2xtkYl8gEELjnfRu4AqlFM9AR2qjJq6Fj81ItkHnV_FnkPMJqJlsGkTJF1sFiVUCPKy0tKz4V6Ox5zG0cimhz4IRqlg4IKDMpiXiLoYorCQ";
 	
 	
 	/**	샌드박스 테스트용 상수	*/

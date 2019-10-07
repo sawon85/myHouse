@@ -27,7 +27,7 @@ public class RequestToken {
 	 * 토큰 발급 요청 (클라이언트 인증 플로우 (Client Credentials flow))
 	 * @return
 	 * @throws IOException
-	 * @throws InterruptedException
+	 * //@throws InterruptedException
 	 * @throws ParseException
 	 */
 
