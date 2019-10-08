@@ -1,5 +1,7 @@
 package com.example.myhouse.CardApi.util;
 
+import android.os.AsyncTask;
+
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -29,10 +31,13 @@ public class ApiRequest {
 		// POST요청을 위한 리퀘스트바디 생성(UTF-8 인코딩)
 		String bodyString = mapper.writeValueAsString(bodyMap);	
 		bodyString = URLEncoder.encode(bodyString, "UTF-8");
-		
+
+
+				JSONObject json = (JSONObject)HttpRequest.post(urlPath, accessToken, bodyString);
+				String result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json);
+
+
 		// API 요청
-		JSONObject json = (JSONObject)HttpRequest.post(urlPath, accessToken, bodyString);
-		String result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json);
 		
 		// 액세스 토큰 유효기간 만료시
 		if("invalid_token".equals(json.get("error"))) {
@@ -51,5 +56,29 @@ public class ApiRequest {
 		
 		return result;
 	}
-	
+
+	public class MyAsyncTask extends AsyncTask<Integer, Integer, Integer> {
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+		}
+
+		@Override
+		protected Integer doInBackground(Integer... integers){
+        return 0;
+	}
+
+	@Override
+	protected void onProgressUpdate(Integer... params) {
+
+	}
+
+	@Override
+	protected void onPostExecute(Integer result) {
+		super.onPostExecute(result);
+	}
+}
+
+
 }
