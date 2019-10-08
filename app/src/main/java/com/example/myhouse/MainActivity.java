@@ -1,8 +1,11 @@
 package com.example.myhouse;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.myhouse.CardApi.CardAPITest;
+import com.example.myhouse.CardApi.util.CommonConstant;
+import com.example.myhouse.CardApi.util.RequestToken;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -69,6 +72,11 @@ public class MainActivity extends AppCompatActivity {
                 handler.sendMessage(msg);
             }
         }.start();
+
+        Intent intent = new Intent(this, folderActivity
+                .class);
+        startActivity(intent);
+
 
     }
 

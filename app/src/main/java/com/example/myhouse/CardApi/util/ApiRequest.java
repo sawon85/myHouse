@@ -1,4 +1,4 @@
-package com.example.myhouse.CardApi;
+package com.example.myhouse.CardApi.util;
 
 import java.io.IOException;
 import java.net.URLEncoder;

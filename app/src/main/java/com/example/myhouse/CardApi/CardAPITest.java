@@ -9,6 +9,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+
+import com.example.myhouse.CardApi.util.RequestToken;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class CardAPITest {
