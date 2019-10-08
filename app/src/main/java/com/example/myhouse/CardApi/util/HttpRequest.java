@@ -1,5 +1,7 @@
 package com.example.myhouse.CardApi.util;
 
+import android.os.AsyncTask;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -16,7 +18,7 @@ import org.springframework.http.MediaType;
 /**
  * HTTP 호출을 위한 재사용 클래스
  */
-public class HttpRequest {
+public class HttpRequest  {
 
 	public static Object post(String url_path, String token, String bodyString) {
 		try {
@@ -33,6 +35,7 @@ public class HttpRequest {
 			}
 
 			// 리퀘스트 바디 전송
+
 			OutputStream os = con.getOutputStream();
 			os.write(bodyString.getBytes());
 			os.flush();
