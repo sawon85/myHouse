@@ -27,13 +27,12 @@
 
         <TextView
 
-            android:id="@+id/current"
 
             android:layout_width="match_parent"
 
             android:layout_height="wrap_content"
 
-            android:text="current"
+            android:text="공인인증서 폴더를 선택하세요"
 
             />
 

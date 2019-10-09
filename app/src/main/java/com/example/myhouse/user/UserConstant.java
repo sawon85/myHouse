@@ -3,7 +3,7 @@ package com.example.myhouse.user;
 public class UserConstant {
 
     ///복지 혜택
-    public static final boolean isNewlyMarriedCouple = true;
+    public static final boolean isNewlyMarriedCouple = true; 
     public static final boolean isNewRecruits = true;  //사회 초년생
     public static final boolean doesHaveManyChildren = true;
 

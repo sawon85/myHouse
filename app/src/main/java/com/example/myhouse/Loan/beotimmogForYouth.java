@@ -25,7 +25,6 @@ public class beotimmogForYouth implements loanProducts {
                 user.doesHaveHouse &&   // 무주택
                 user.salary > 5000 &&   // 연봉 5000 이하
                 user.property > 28000 ) //자산 2.8억 이하
-
            {
                 _isEnalbe = false;
                 return;

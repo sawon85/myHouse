@@ -109,15 +109,14 @@ public class AccountTest {
 		
 		// 요청 파라미터 설정 시작
 		HashMap<String, Object> bodyMap = new HashMap<String, Object>();
-		bodyMap.put("connectedId",	"3lSo.uHkkIHav4ULiTiabV");	// 엔드유저의 은행/카드사 계정 등록 후 발급받은 커넥티드아이디 예시
-		bodyMap.put("organization",	"0306");
+		bodyMap.put("connectedId",	"");	// 엔드유저의 은행/카드사 계정 등록 후 발급받은 커넥티드아이디 예시
+		bodyMap.put("organization",	"0303");
 		bodyMap.put("birthDate",	"19950805");
 
-		bodyMap.put("startDate", "20190101");
+		bodyMap.put("startDate", "20180930");
 		bodyMap.put("endDate",	"20190930");
 		bodyMap.put("orderBy",		"1");
 		bodyMap.put("inquiryType",	"1");
-		bodyMap.put("memberStoreInfoType",	"1");
 
 
 		// 요청 파라미터 설정 종료

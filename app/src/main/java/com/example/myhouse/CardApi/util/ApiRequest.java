@@ -34,8 +34,7 @@ public class ApiRequest {
 
 
 				JSONObject json = (JSONObject)HttpRequest.post(urlPath, accessToken, bodyString);
-				String result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json);
-
+				String result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json.containsValue("resMemberStoreType"));
 
 		// API 요청
 		

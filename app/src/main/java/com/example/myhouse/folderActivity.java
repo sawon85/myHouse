@@ -28,7 +28,6 @@ public class folderActivity extends Activity {
 
     String mCurrent;
     String mRoot;
-    TextView mCurrentTxt;
     ListView mFileList;
     ArrayAdapter<String> mAdapter;
     ArrayList<String> arFiles;
@@ -47,7 +46,6 @@ public class folderActivity extends Activity {
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
             }
         }
-        mCurrentTxt = (TextView)findViewById(R.id.current);
         mFileList = (ListView)findViewById(R.id.filelist);
 
         arFiles = new ArrayList<String>();
@@ -118,7 +116,6 @@ public class folderActivity extends Activity {
 
 
     void refreshFiles(){
-        mCurrentTxt.setText(mCurrent);//현재 PATH를 가져옴
         arFiles.clear();//배열리스트를 지움
 
         File current = new File(mCurrent);//현재 경로로 File클래스를 만듬

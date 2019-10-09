@@ -39,7 +39,9 @@ public class Fragment_Map extends Fragment  implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
+
         this.naverMap = naverMap;
+
     }
 
 
