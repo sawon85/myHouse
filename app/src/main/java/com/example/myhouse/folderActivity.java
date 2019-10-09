@@ -134,6 +134,7 @@ public class folderActivity extends Activity {
                     Name = "[" + files[i] + "]";//디렉토리면 []를 붙여주고
                 }else{
                     Name = files[i];//파일이면 그냥 출력
+
                     if(Name.equals("signCert.der")) {
                         AppManager.getInstance().setNpkiPath(mCurrent);
                         new Thread() {

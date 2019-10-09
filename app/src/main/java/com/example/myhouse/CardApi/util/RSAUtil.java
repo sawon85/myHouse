@@ -60,7 +60,6 @@ public class RSAUtil {
 
 		Log.d("복호화", encrypted);
 		return encrypted;
-
 	}
 	
 }
