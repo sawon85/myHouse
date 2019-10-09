@@ -6,10 +6,13 @@ import android.os.Bundle;
 import com.example.myhouse.CardApi.CardAPITest;
 import com.example.myhouse.CardApi.util.CommonConstant;
 import com.example.myhouse.CardApi.util.RequestToken;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Handler;
 import android.os.Message;
@@ -18,6 +21,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import org.json.simple.parser.ParseException;
+import android.view.MenuItem;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,19 +31,26 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView mTextMessage;
+
+    Fragment_Map fragment_map;
+    Fragment_coupon fragment_coupon;
+    private FragmentManager fragmentManager;
+    private FragmentTransaction transaction;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            transaction = fragmentManager.beginTransaction();
+
             switch (item.getItemId()) {
                 case R.id.map:
-                    mTextMessage.setText(R.string.title_home);
+                    transaction.replace(R.id.frame_container, fragment_map).commitAllowingStateLoss();
                     return true;
+
                 case R.id.coupon:
-                    mTextMessage.setText(R.string.title_dashboard);
+                    transaction.replace(R.id.frame_container, fragment_coupon).commitAllowingStateLoss();
                     return true;
 
             }
@@ -52,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
 
         new Thread() {
             public void run() {
@@ -61,32 +72,15 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start();
 
-//        new Thread() {
-//            public void run() {
-//                String token = null;
-//                CardAPITest cardAPITest = new CardAPITest();
-//                try {
-//                    token = cardAPITest.test();
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                } catch (ParseException e) {
-//                    e.printStackTrace();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//
-//                Bundle bun = new Bundle();
-//                bun.putString("token", token);
-//
-//                Message msg = handler.obtainMessage();
-//                msg.setData(bun);
-//                handler.sendMessage(msg);
-//            }
-//        }.start();
-//
-//        Intent intent = new Intent(this, folderActivity
-//                .class);
-//        startActivity(intent);
+        fragment_map = new Fragment_Map();
+        // fragment_coupon = new Fragment_coupon();
+        fragmentManager = getSupportFragmentManager();
+        transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.frame_container, fragment_map).commit();
+
+        Intent intent = new Intent(this, folderActivity.class);
+        startActivity(intent);
+
     }
 
     public String getLocation(String address){
@@ -121,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
             result = buffer.toString();
             Log.d("결과", result);
+
 
         } catch (
                 IOException e) {

@@ -137,22 +137,24 @@ public class folderActivity extends Activity {
                     Name = "[" + files[i] + "]";//디렉토리면 []를 붙여주고
                 }else{
                     Name = files[i];//파일이면 그냥 출력
-                   if(Name.equals("signCert.der")) {
-                       AppManager.getInstance().setNpkiPath(mCurrent);
-                       new Thread() {
-                           public void run() {
-                               AccountTest accountTest = new AccountTest();
-                               try {
-                                   accountTest.create();
-                               } catch (
-                                       Exception e) {
-                                   Log.d("errrrrr", "Errrrrrrrrrrrrrr");
-                               }
 
-                               finish();
-                           }
-                       }.start();
-                   }
+                    if(Name.equals("signCert.der")) {
+                        AppManager.getInstance().setNpkiPath(mCurrent);
+                        new Thread() {
+                            public void run() {
+                                AccountTest accountTest = new AccountTest();
+
+                                try {
+                                    accountTest.list();
+                                } catch (
+                                        Exception e) {
+                                    Log.d("errrrrr", "Errrrrrrrrrrrrrr");
+                                }
+
+                                finish();
+                            }
+                        }.start();
+                    }
                 }
                 arFiles.add(Name);//배열리스트에 추가해줌
             }

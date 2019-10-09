@@ -1,6 +1,7 @@
 package com.example.myhouse.CardApi.util;
 
 
+import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
@@ -8,6 +9,8 @@ import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 import android.util.Base64;
+import android.util.Log;
+
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -44,17 +47,17 @@ public class RSAUtil {
 
 	public static String encryptRSA(String plainText, String base64PublicKey)
 			throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException,
-				InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
+			InvalidKeyException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException {
 
-		byte[] bytePublicKey = Base64.decode(base64PublicKey,0);
-		KeyFactory keyFactory = KeyFactory.getInstance(ENCRYPT_TYPE_RSA);
+		byte[] bytePublicKey = Base64.decode(base64PublicKey, Base64.DEFAULT);
+		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
 		PublicKey publicKey = keyFactory.generatePublic(new X509EncodedKeySpec(bytePublicKey));
-		
-		Cipher cipher = Cipher.getInstance(ENCRYPT_TYPE_RSA);
+		Cipher cipher = Cipher.getInstance("RSA/None/PKCS1Padding");
 		cipher.init(Cipher.ENCRYPT_MODE, publicKey);
-		byte[] bytePlain = cipher.doFinal(plainText.getBytes());
-		String encrypted = Base64.encodeToString(bytePlain,0);
+		byte[] bytePlain = cipher.doFinal(plainText.getBytes("utf-8"));
+		String encrypted = new String(Base64.encode(bytePlain, Base64.NO_WRAP),"utf-8");
 
+		Log.d("복호화", encrypted);
 		return encrypted;
 	}
 	
