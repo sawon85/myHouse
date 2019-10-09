@@ -51,7 +51,7 @@ public class AccountTest {
 	@Ignore
 	public void create() throws IOException, InterruptedException, ParseException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
 		/// 요청 URL 설정
-		String urlPath = CommonConstant.getRequestDomain() + CommonConstant.CREATE_ACCOUNT;
+		String urlPath = CommonConstant.API_DOMAIN + CommonConstant.CREATE_ACCOUNT;
 		
 		// 요청 파라미터 설정 시작
 		HashMap<String, Object> bodyMap = new HashMap<String, Object>();	
@@ -59,28 +59,28 @@ public class AccountTest {
 
 		HashMap<String, Object> accountMap1 = new HashMap<String, Object>();
 		accountMap1.put("countryCode",	"KR");
-		accountMap1.put("businessType",	"BK");
+		accountMap1.put("businessType",	"CD");
 		accountMap1.put("clientType",  	"P");
-		accountMap1.put("organization",	"0011");
+		accountMap1.put("organization",	"0306");
 		accountMap1.put("loginType",  	"0");
 		
-		String password1 = "비버";
-		Log.d("errrrrr", "패스워드 입력");
+		String password1 = "";
+		Log.d("errrrrr", "");
 		accountMap1.put("password",  	RSAUtil.encryptRSA(password1, CommonConstant.PUBLIC_KEY));	/**	password RSA encrypt */
 
 		File certFile = new File(AppManager.getInstance().getNpkiPath() + "/signCert.der");
 		File keyFile = new File(AppManager.getInstance().getNpkiPath() + "/signPri.key");
 
 		byte[] fileContent = FileUtils.readFileToByteArray(certFile);
-		String encodedString = Base64.encodeToString(fileContent ,0);
+		String encodedString = Base64.encodeToString(fileContent ,Base64.NO_WRAP);
 		derFileEncoded = encodedString;
 
 		fileContent = FileUtils.readFileToByteArray(keyFile);
-		encodedString = Base64.encodeToString(fileContent, 0);
+		encodedString = Base64.encodeToString(fileContent, Base64.NO_WRAP);
 		keyFileEncoded = encodedString;
 
-		accountMap1.put("keyFile",      keyFileEncoded);
-		accountMap1.put("derFile",      derFileEncoded);
+		accountMap1.put("keyFile",keyFileEncoded);
+		accountMap1.put("derFile",derFileEncoded);
 		list.add(accountMap1);
 		
 		bodyMap.put("accountList", list);
@@ -90,8 +90,6 @@ public class AccountTest {
 		System.out.println("요청");
 		String result = ApiRequest.reqeust(urlPath, bodyMap);
 		System.out.println("완료");
-
-		System.out.println("아이디");
 		// 응답결과 확인
 		System.out.println(result);
 	}
@@ -107,13 +105,21 @@ public class AccountTest {
 	@Ignore
 	public void list() throws IOException, InterruptedException, ParseException {
 		// 요청 URL 설정
-		String urlPath = CommonConstant.getRequestDomain() + CommonConstant.GET_ACCOUNTS;	
+		String urlPath = CommonConstant.getRequestDomain()  + CommonConstant.KR_CD_P_002;
 		
 		// 요청 파라미터 설정 시작
 		HashMap<String, Object> bodyMap = new HashMap<String, Object>();
-		
-		String connectedId = "45t4DJOD44M9uwH7zxSgBg";	// 엔드유저의 은행/카드사 계정 등록 후 발급받은 커넥티드아이디 예시
-		bodyMap.put(CommonConstant.CONNECTED_ID, connectedId);
+		bodyMap.put("connectedId",	"3lSo.uHkkIHav4ULiTiabV");	// 엔드유저의 은행/카드사 계정 등록 후 발급받은 커넥티드아이디 예시
+		bodyMap.put("organization",	"0306");
+		bodyMap.put("birthDate",	"19950805");
+
+		bodyMap.put("startDate", "20190101");
+		bodyMap.put("endDate",	"20190930");
+		bodyMap.put("orderBy",		"1");
+		bodyMap.put("inquiryType",	"1");
+		bodyMap.put("memberStoreInfoType",	"1");
+
+
 		// 요청 파라미터 설정 종료
 		
 		// API 요청

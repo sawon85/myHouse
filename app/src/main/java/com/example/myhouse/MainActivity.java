@@ -3,33 +3,37 @@ package com.example.myhouse;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.myhouse.CardApi.util.CommonConstant;
-import com.example.myhouse.CardApi.util.RequestToken;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.TextView;
-
 
 
 public class MainActivity extends AppCompatActivity {
-    private TextView mTextMessage;
+
+    Fragment_Map fragment_map;
+    Fragment_coupon fragment_coupon;
+    private FragmentManager fragmentManager;
+    private FragmentTransaction transaction;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            transaction = fragmentManager.beginTransaction();
+
             switch (item.getItemId()) {
                 case R.id.map:
-                    mTextMessage.setText(R.string.title_home);
+                    transaction.replace(R.id.frame_container, fragment_map).commitAllowingStateLoss();
                     return true;
+
                 case R.id.coupon:
-                    mTextMessage.setText(R.string.title_dashboard);
+                    transaction.replace(R.id.frame_container, fragment_coupon).commitAllowingStateLoss();
                     return true;
 
             }
@@ -42,13 +46,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        Intent intent = new Intent(this, folderActivity
-                .class);
-        startActivity(intent);
+        fragment_map = new Fragment_Map();
+       // fragment_coupon = new Fragment_coupon();
+        fragmentManager = getSupportFragmentManager();
+        transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.frame_container, fragment_map).commit();
 
+        Intent intent = new Intent(this, folderActivity.class);
+        startActivity(intent);
 
     }
 
