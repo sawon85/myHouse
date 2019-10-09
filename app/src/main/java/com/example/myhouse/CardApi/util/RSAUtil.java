@@ -56,7 +56,6 @@ public class RSAUtil {
 		String encrypted = Base64.encodeToString(bytePlain,0);
 
 		return encrypted;
-
 	}
 	
 }
