@@ -12,11 +12,16 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.myhouse.AppManager;
+import com.example.myhouse.House.HouseAdapter;
+import com.example.myhouse.House.HouseVO;
 import com.example.myhouse.MainActivity;
 import com.example.myhouse.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class NetworkTask extends AsyncTask<Void, Void, String> {
     private Context context;
@@ -69,8 +74,9 @@ public class NetworkTask extends AsyncTask<Void, Void, String> {
         try {
             //경우에 따라 결과 값을 받아 일어났으면 하는 작업
             switch (this.selection) {
-                case NetworkConstants.getHouse:
+                case NetworkConstants.getHouseByDong:
                     try {
+                        ArrayList<HouseVO> houseVOS = new ArrayList<>();
                         JSONObject jsonObject = new JSONObject(result);
                         String real_result = jsonObject.getString("result");
                         JSONArray resultObjectArray = new JSONArray(real_result);
@@ -84,32 +90,33 @@ public class NetworkTask extends AsyncTask<Void, Void, String> {
                                     int spacious1 = resultObject.getInt("spacious1");
                                     int spacious2 = resultObject.getInt("spacious2");
                                     String dong = resultObject.getString("dong");
-                                    String block = resultObject.getString("lot_number");
+                                    String lotNnumber = resultObject.getString("lot_number");
                                     String name = resultObject.getString("name");
+                                    //String block = resultObject.getString("")
                                     String address1 = resultObject.getString("address1");
                                     String address2 = resultObject.getString("address2");
                                     String floor = resultObject.getString("floor");
                                     double x = resultObject.getDouble("latitude");
                                     double y = resultObject.getDouble("longitude");
-                                    int price = resultObject.getInt("price");
-                                    int deposit = resultObject.getInt("deposit");
+                                    int price = Integer.parseInt(resultObject.getString("price").replace(",", ""));
+                                    int deposit = Integer.parseInt(resultObject.getString("deposit").replace(",", ""));
+                                    int monthlyRent = Integer.parseInt(resultObject.getString("monthly_rent").replace(",", ""));
+                                    int loan = Integer.parseInt(resultObject.getString("loan").replace(",", ""));
                                     String information = resultObject.getString("information");
                                     String featrue = resultObject.getString("feature");
                                     Boolean possible = resultObject.getBoolean("possible");
                                     String transmit_date = resultObject.getString("transmit_date");
                                     String registration_date = resultObject.getString("registration_date");
-                                    int registrarNumber = resultObject.getInt("registrar_number");
+                                    String registrarNumber = resultObject.getString("registrar_number");
 
-                                    ReviewListItem item = new ReviewListItem(decodedByte, nickname, star, review);
-                                    reviewListItems.add(item);
+                                    HouseVO houseVO = new HouseVO(home_index, type, spacious1, spacious2, dong, lotNnumber, name, address1, address2, floor,
+                                            x, y, price, deposit, monthlyRent, loan, information, featrue, possible, transmit_date, registration_date, registrarNumber);
+                                    houseVOS.add(houseVO);
                                 }
 
                                 //후기 설정
-                                ReviewListViewAdapter adapter;  //후기 리스트뷰 어댑터
-                                ListView reviewList;         // 후기 리스트
-                                reviewList = (ListView) ((Activity) context).findViewById(R.id.class_review_listView);
-                                adapter = new ReviewListViewAdapter(((Activity) context).getLayoutInflater(), R.layout.class_review_listview_item, reviewListItems);
-                                reviewList.setAdapter(adapter);
+                                HouseAdapter houseAdapter = new HouseAdapter(houseVOS);
+                                AppManager.getInstance().houseAdapter = houseAdapter;
                             }
                         } else if (real_result.equals("fail1")) {
                             Toast.makeText(this.context, "룸유저에 추가 실패하였습니다.", Toast.LENGTH_LONG).show();

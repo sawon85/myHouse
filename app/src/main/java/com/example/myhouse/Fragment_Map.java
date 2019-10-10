@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.myhouse.Network.NetworkConstants;
+import com.example.myhouse.Network.NetworkTask;
 import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
@@ -44,6 +46,12 @@ public class Fragment_Map extends Fragment  implements OnMapReadyCallback {
 
     }
 
+    public void getHouseByDong(String dong){
+        String url = "http://106.10.35.170/ImportHomeList.php";
+        String dataStr = "dong=" + dong;
+        NetworkTask networkTask = new NetworkTask(this.getContext(), url, dataStr, NetworkConstants.getHouseByDong);
+        networkTask.execute();
+    }
 
 
 }

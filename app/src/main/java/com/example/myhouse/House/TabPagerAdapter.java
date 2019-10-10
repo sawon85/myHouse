@@ -21,14 +21,14 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
         switch (position)
         {
             case 0:
-                ClassDetailIntroduction classDetailIntroduction = new ClassDetailIntroduction();
+                //ClassDetailIntroduction classDetailIntroduction = new ClassDetailIntroduction();
               /*  Bundle bundle = new Bundle();
                 bundle.putString("desc",);
                 classDetailIntroduction.setArguments(bundle);*/
-                return classDetailIntroduction;
+                //return classDetailIntroduction;
             case 1:
-                ClassDetailReview classDetailReview = new ClassDetailReview();
-                return classDetailReview;
+                //ClassDetailReview classDetailReview = new ClassDetailReview();
+                ///return classDetailReview;
 
                 default :
                     return null;

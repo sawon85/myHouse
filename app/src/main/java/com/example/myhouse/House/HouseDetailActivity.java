@@ -39,12 +39,7 @@ public class HouseDetailActivity extends AppCompatActivity {
         byte[] byteArray = getIntent().getByteArrayExtra("image");
         ImageView imageView = findViewById(R.id.class_main_image);
 
-        //글라이드처리
-        Glide.with(ClassDetailActivity.this)
-                .load(byteArray)
-                .into(imageView);
-//        Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-//        imageView.setImageBitmap(bitmap);
+
 
 
         //지역구

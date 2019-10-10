@@ -1,6 +1,7 @@
 package com.example.myhouse;
 
 
+import com.example.myhouse.House.HouseAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -25,5 +26,7 @@ public class AppManager {
     public String result;
 
     public ArrayList<String> account;
+
+    public HouseAdapter houseAdapter;
 }
 

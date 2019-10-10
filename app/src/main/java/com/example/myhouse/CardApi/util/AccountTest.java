@@ -68,7 +68,7 @@ public class AccountTest {
 		accountMap1.put("organization",	"0306");
 		accountMap1.put("loginType",  	"0");
 		
-		String password1 = "4lfp36zz!!";
+		String password1 = "";
 		Log.d("errrrrr", "");
 		accountMap1.put("password",  	RSAUtil.encryptRSA(password1, CommonConstant.PUBLIC_KEY));	/**	password RSA encrypt */
 
