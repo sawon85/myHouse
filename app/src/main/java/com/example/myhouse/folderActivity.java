@@ -142,7 +142,7 @@ public class folderActivity extends Activity {
                                 AccountTest accountTest = new AccountTest();
 
                                 try {
-                                    accountTest.LoanList();
+                                    accountTest.list();
 
                                 } catch (
                                         Exception e) {

@@ -11,8 +11,8 @@ public class HouseVO {
     public String unit;         // 호
     public String floor;        //층
 
-    public int x; // 위도
-    public int y; // 경도
+    public int x; // 경도
+    public int y; // 위도
 
     public boolean isLoanable; // 대출 가능 여부
     public String description;   // 매물 설명
