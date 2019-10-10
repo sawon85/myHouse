@@ -2,6 +2,7 @@ package com.example.myhouse.user;
 
 import com.example.myhouse.Card.CardAnalysis;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class UserVO {
@@ -30,4 +31,7 @@ public class UserVO {
         Arrays.fill(cardData,0);
     }
 
+    // 대출
+    public ArrayList<Double> loanResRate = new ArrayList<>();  //이율
+    public ArrayList<Integer> resLoanBalance = new ArrayList<>(); // 대출 잔액 //단위 : 1원
 }
