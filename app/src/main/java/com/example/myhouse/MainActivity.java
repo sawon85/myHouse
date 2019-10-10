@@ -26,14 +26,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-<<<<<<< HEAD
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
-=======
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
->>>>>>> origin/map
 import org.json.simple.parser.ParseException;
 
 import java.io.BufferedReader;
