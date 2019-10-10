@@ -21,5 +21,9 @@ public class AppManager {
 
     public String getNpkiPath() {return npkiPath; }
     public void setNpkiPath(String path) {this.npkiPath = path;}
+
+    public String result;
+
+    public ArrayList<String> account;
 }
 

@@ -3,8 +3,8 @@
     package="com.example.myhouse">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,10 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".graphActivity"></activity>
+
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="5phvyfpjfq" />
-        <activity android:name=".folderActivity"></activity>
+
+        <activity android:name=".folderActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

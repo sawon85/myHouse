@@ -3,10 +3,12 @@ package com.example.myhouse;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.myhouse.Card.CardAnalysis;
 import com.example.myhouse.CardApi.CardAPITest;
 import com.example.myhouse.CardApi.util.CommonConstant;
 import com.example.myhouse.CardApi.util.RequestToken;
 
+import com.example.myhouse.user.UserVO;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,10 +20,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import org.json.simple.*;
+import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import android.view.MenuItem;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -81,6 +86,15 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, folderActivity.class);
         startActivity(intent);
 
+        ((Button) findViewById(R.id.card)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplication(), graphActivity.class);
+                startActivity(intent);
+
+            }
+        });
     }
 
     public String getLocation(String address){

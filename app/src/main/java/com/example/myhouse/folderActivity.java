@@ -142,7 +142,8 @@ public class folderActivity extends Activity {
                                 AccountTest accountTest = new AccountTest();
 
                                 try {
-                                    accountTest.list();
+                                    accountTest.LoanList();
+
                                 } catch (
                                         Exception e) {
                                     Log.d("errrrrr", "Errrrrrrrrrrrrrr");

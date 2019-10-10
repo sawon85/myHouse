@@ -1,5 +1,9 @@
 package com.example.myhouse.user;
 
+import com.example.myhouse.Card.CardAnalysis;
+
+import java.util.Arrays;
+
 public class UserVO {
 
     private static UserVO instance = null;
@@ -10,6 +14,7 @@ public class UserVO {
         return instance;
     }
 
+    public int[] cardData = new int[CardAnalysis.MAXIMUM];
 
     public boolean doesHaveHouse;  // 갖고잇는 주택
     public boolean doesMarry;    // 결혼 유무
@@ -19,5 +24,10 @@ public class UserVO {
     public int property; //자산
     public int deposit; //보증금
     public int age;
+
+    UserVO()
+    {
+        Arrays.fill(cardData,0);
+    }
 
 }

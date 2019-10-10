@@ -33,8 +33,10 @@ public class ApiRequest {
 		bodyString = URLEncoder.encode(bodyString, "UTF-8");
 
 
-				JSONObject json = (JSONObject)HttpRequest.post(urlPath, accessToken, bodyString);
-				String result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json.containsValue("resMemberStoreType"));
+		JSONObject json = (JSONObject)HttpRequest.post(urlPath, accessToken, bodyString);
+		String result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json);
+
+
 
 		// API 요청
 		
