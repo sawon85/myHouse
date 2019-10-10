@@ -68,7 +68,7 @@ public class AccountTest {
 		accountMap1.put("organization",	"0011");
 		accountMap1.put("loginType",  	"0");
 		
-		String password1 = "sawon82821!";
+		String password1 = "";
 		Log.d("errrrrr", "");
 		accountMap1.put("password",  	RSAUtil.encryptRSA(password1, CommonConstant.PUBLIC_KEY));	/**	password RSA encrypt */
 
@@ -113,7 +113,7 @@ public class AccountTest {
 		
 		// 요청 파라미터 설정 시작
 		HashMap<String, Object> bodyMap = new HashMap<String, Object>();
-		bodyMap.put("connectedId",	"9uZVOm6FQky8pYzb.FSlqR");	// 엔드유저의 은행/카드사 계정 등록 후 발급받은 커넥티드아이디 예시
+		bodyMap.put("connectedId",	"");	// 엔드유저의 은행/카드사 계정 등록 후 발급받은 커넥티드아이디 예시
 		bodyMap.put("organization",	"0011");
 		bodyMap.put("birthDate",	"19950805");
 		bodyMap.put("startDate", "20181001");

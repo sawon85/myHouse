@@ -16,7 +16,7 @@ public class UserVO {
 
     public int[] cardData = new int[CardAnalysis.MAXIMUM];
 
-    public boolean doesHaveHouse;  // 갖고잇는 주택
+    public boolean hasHouse;  // 갖고잇는 주택
     public boolean doesMarry;    // 결혼 유무
     public boolean isNewRecruits;
     

@@ -13,7 +13,7 @@ public class beotimmogForMothlyRentLoan implements loanProducts {
 
     @Override
     public String getProductName() {
-        return "버팀목 - 주거출 안정 월세 대";
+        return "버팀목 - 주거 안정 월세 대출";
     }
 
     @Override
@@ -21,7 +21,6 @@ public class beotimmogForMothlyRentLoan implements loanProducts {
 
     @Override
     public void setUserData(UserVO user) {
-
 
         //우대형
         if ( (user.age <= 35 && user.salary == 0) &&   //부모 소득 처리 부분.
@@ -32,11 +31,8 @@ public class beotimmogForMothlyRentLoan implements loanProducts {
             return;
         }
 
-
         //일반형
-
         if(user.salary <= 5000 ) {
-
             interestRate = 2.5f;
             return;
         }
@@ -51,7 +47,7 @@ public class beotimmogForMothlyRentLoan implements loanProducts {
 
     @Override
     public float getInterestRate() {
-        return 0;
+        return interestRate;
     }
 
     @Override
@@ -62,5 +58,10 @@ public class beotimmogForMothlyRentLoan implements loanProducts {
     @Override
     public float getLimitPercent() {
         return 1.0f;
+    }
+
+    @Override
+    public String getSpecialNote() {
+        return null;
     }
 }

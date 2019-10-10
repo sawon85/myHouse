@@ -17,4 +17,6 @@ public interface loanProducts {
     int getLimit();
 
     float getLimitPercent();
+
+    String getSpecialNote();
 }

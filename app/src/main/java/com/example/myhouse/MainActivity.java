@@ -10,6 +10,8 @@ import com.example.myhouse.CardApi.util.RequestToken;
 
 import com.example.myhouse.user.UserVO;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.api.client.json.Json;
+import com.google.gson.JsonObject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
@@ -24,8 +26,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+<<<<<<< HEAD
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
+=======
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+>>>>>>> origin/map
 import org.json.simple.parser.ParseException;
 
 import java.io.BufferedReader;
@@ -34,6 +42,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -70,10 +79,9 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-
         new Thread() {
             public void run() {
-                getLocation("화양동");
+                getLocation("단구동 1684-1");
             }
         }.start();
 
@@ -97,9 +105,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public String getLocation(String address){
+    public ArrayList getLocation(String address){
         URL url = null;
         String result = null;
+        ArrayList location = null;
         try {
             url = new URL("https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode" + "?query=" + address);
         } catch (
@@ -128,14 +137,24 @@ public class MainActivity extends AppCompatActivity {
                 reader.close();
 
             result = buffer.toString();
-            Log.d("결과", result);
+            JSONObject jsonObject = new JSONObject(result);
+            JSONArray addressString = jsonObject.getJSONArray("addresses");
+            //JSONObject addressJson = new JSONObject(addressString);
+            double x = Double.parseDouble(addressString.getJSONObject(0).getString("x"));
+            double y = Double.parseDouble(addressString.getJSONObject(0).getString("y"));
 
+            Log.d("결과", "x : " + x + "\ny : " + y);
+            location = new ArrayList<Double>();
+            location.add(x);
+            location.add(y);
 
         } catch (
                 IOException e) {
             e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-        return result;
+        return location;
     }
 
 //    Handler handler = new Handler() {
