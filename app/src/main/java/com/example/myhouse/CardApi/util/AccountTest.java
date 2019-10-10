@@ -3,6 +3,7 @@ package com.example.myhouse.CardApi.util;
 import android.util.Log;
 
 import com.example.myhouse.AppManager;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,6 +21,9 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
 import org.apache.commons.io.FileUtils;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -59,9 +63,9 @@ public class AccountTest {
 
 		HashMap<String, Object> accountMap1 = new HashMap<String, Object>();
 		accountMap1.put("countryCode",	"KR");
-		accountMap1.put("businessType",	"CD");
+		accountMap1.put("businessType",	"BK");
 		accountMap1.put("clientType",  	"P");
-		accountMap1.put("organization",	"0306");
+		accountMap1.put("organization",	"0011");
 		accountMap1.put("loginType",  	"0");
 		
 		String password1 = "";
@@ -103,28 +107,28 @@ public class AccountTest {
 	 */
 	@Test 
 	@Ignore
-	public void list() throws IOException, InterruptedException, ParseException {
+	public void list() throws IOException, InterruptedException, ParseException{
 		// 요청 URL 설정
 		String urlPath = CommonConstant.getRequestDomain()  + CommonConstant.KR_CD_P_002;
 		
 		// 요청 파라미터 설정 시작
 		HashMap<String, Object> bodyMap = new HashMap<String, Object>();
-		bodyMap.put("connectedId",	"3lSo.uHkkIHav4ULiTiabV");	// 엔드유저의 은행/카드사 계정 등록 후 발급받은 커넥티드아이디 예시
-		bodyMap.put("organization",	"0306");
+		bodyMap.put("connectedId",	"");	// 엔드유저의 은행/카드사 계정 등록 후 발급받은 커넥티드아이디 예시
+		bodyMap.put("organization",	"0011");
 		bodyMap.put("birthDate",	"19950805");
-
-		bodyMap.put("startDate", "20190101");
+		bodyMap.put("startDate", "20181001");
 		bodyMap.put("endDate",	"20190930");
 		bodyMap.put("orderBy",		"1");
 		bodyMap.put("inquiryType",	"1");
-		bodyMap.put("memberStoreInfoType",	"1");
 
 
 		// 요청 파라미터 설정 종료
 		
 		// API 요청
 		String result = ApiRequest.reqeust(urlPath, bodyMap);
-		
+		AppManager.getInstance().result = result;
+
+
 		// 응답결과 확인
 		System.out.println(result);
 	}
@@ -295,6 +299,73 @@ public class AccountTest {
 		
 		// 응답결과 확인
 		System.out.println(result);
+	}
+
+
+	/**
+	 * 계정 목록조회
+	 *
+	 * @throws IOException
+	 * @throws InterruptedException
+	 * @throws ParseException
+	 */
+	@Test
+	@Ignore
+	public void LoanList() throws IOException, InterruptedException, ParseException{
+		// 요청 URL 설정
+		String urlPath = CommonConstant.getRequestDomain()  + CommonConstant.KR_BK_1_P_001;
+
+		// 요청 파라미터 설정 시작
+		HashMap<String, Object> bodyMap = new HashMap<String, Object>();
+		bodyMap.put("connectedId",	"9uZVOm6FQky8pYzb.FSlqR");	// 엔드유저의 은행/카드사 계정 등록 후 발급받은 커넥티드아이디 예시
+		bodyMap.put("organization",	"0011");
+
+		// API 요청
+		String result = ApiRequest.reqeust(urlPath, bodyMap);
+		AppManager.getInstance().result = result;
+
+		// 응답결과 확인
+		System.out.println(result);
+
+		JSONParser jsonParser = new JSONParser();
+		JSONObject jsonObject;
+
+		try{
+			ObjectMapper mapper = new ObjectMapper();
+			jsonObject = (JSONObject) jsonParser.parse(AppManager.getInstance().result);
+			JSONObject jsonObject1= (JSONObject) jsonObject.get("data");
+			JSONArray jsonArray1 = (JSONArray) jsonObject1.get("resDepositTrust");
+			JSONObject objectInArray;
+			AppManager.getInstance().account = new ArrayList<String>();
+			for( int i = 0; i < jsonArray1.size(); i++) {
+
+				objectInArray = (JSONObject) jsonArray1.get(i);
+				String account = (String) objectInArray.get("resAccount");
+				AppManager.getInstance().account.add(account);
+				System.out.println(account);
+
+				String urlPath2 = CommonConstant.getRequestDomain() + CommonConstant.KR_BK_1_P_004;
+				HashMap<String, Object> bodyMap2 = new HashMap<String, Object>();
+				bodyMap2.put("connectedId", "9uZVOm6FQky8pYzb.FSlqR");    // 엔드유저의 은행/카드사 계정 등록 후 발급받은 커넥티드아이디 예시
+				bodyMap2.put("organization", "0011");
+				bodyMap2.put("account", account);
+				bodyMap2.put("startDate", "20000101");
+				bodyMap2.put("endDate", "20191010");
+				bodyMap2.put("orderBy", "0");
+
+				result = ApiRequest.reqeust(urlPath2, bodyMap2);
+				AppManager.getInstance().result = result;
+
+				// 응답결과 확인
+				System.out.println(result);
+
+			}
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+
 	}
 	
 	/**

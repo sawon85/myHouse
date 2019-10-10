@@ -46,8 +46,9 @@ public class RSAUtil {
 	 */
 
 	public static String encryptRSA(String plainText, String base64PublicKey)
-			throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException,
-			InvalidKeyException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException {
+
+		throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException,
+		InvalidKeyException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException {
 
 		byte[] bytePublicKey = Base64.decode(base64PublicKey, Base64.DEFAULT);
 		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
