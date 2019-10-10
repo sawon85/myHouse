@@ -8,6 +8,7 @@ import com.example.myhouse.CardApi.CardAPITest;
 import com.example.myhouse.CardApi.util.CommonConstant;
 import com.example.myhouse.CardApi.util.RequestToken;
 
+import com.example.myhouse.House.HouseDetailActivity;
 import com.example.myhouse.user.UserVO;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.api.client.json.Json;
@@ -75,20 +76,11 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        new Thread() {
-            public void run() {
-                ArrayList list = getLocation("단구동 1684-1");
-            }
-        }.start();
-
         fragment_map = new Fragment_Map();
         // fragment_coupon = new Fragment_coupon();
         fragmentManager = getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frame_container, fragment_map).commit();
-
-        Intent intent = new Intent(this, folderActivity.class);
-        startActivity(intent);
 
         ((Button) findViewById(R.id.card)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +91,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+        Intent intent = new Intent(this, HouseDetailActivity.class);
+        startActivity(intent);
     }
 
     public ArrayList getLocation(String address){

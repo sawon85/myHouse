@@ -14,7 +14,6 @@
         android:orientation="vertical">
 
 
-
         <!--탭박-->
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -134,7 +133,6 @@
 
 
 
-
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/container_class"
             android:layout_width="match_parent"
@@ -156,17 +154,19 @@
         android:visibility="visible"
         android:weightSum="1"
         android:layout_marginBottom="5dp">
+
         <Button
             android:layout_marginRight="2dp"
             android:onClick="RentButtonClicked"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             android:text="대출 NO"
-            android:id="@+id/heart"
+            android:id="@+id/loan_button"
             android:layout_width="0dp"
             android:layout_height="45dp"
-            android:background="#"
+            android:background="#2222"
             android:layout_weight="0.2"/>
+
         <Button
             android:id="@+id/class_reserve"
             android:onClick="CounselingRequest"

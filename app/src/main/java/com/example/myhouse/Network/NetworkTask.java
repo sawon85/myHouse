@@ -66,7 +66,9 @@ public class NetworkTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
+        /*
         try {
+
             //경우에 따라 결과 값을 받아 일어났으면 하는 작업
             switch (this.selection) {
                 case NetworkConstants.getHouse:
@@ -137,5 +139,6 @@ public class NetworkTask extends AsyncTask<Void, Void, String> {
                 asyncDialog.dismiss();
             }
         }
+        */
     }
 }
