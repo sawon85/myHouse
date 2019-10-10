@@ -2,6 +2,7 @@ package com.example.myhouse;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.myhouse.House.HouseVO;
 import com.example.myhouse.Network.NetworkConstants;
 import com.example.myhouse.Network.NetworkTask;
 import com.naver.maps.geometry.LatLng;
@@ -32,8 +34,12 @@ public class Fragment_Map extends Fragment  implements OnMapReadyCallback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_map, container, false);
+
+        getHouseByDong("단구동");
         return view;
     }
+
+
 
     @Override
     public void onViewCreated(View view,
