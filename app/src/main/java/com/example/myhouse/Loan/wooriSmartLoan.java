@@ -2,33 +2,26 @@ package com.example.myhouse.Loan;
 
 import com.example.myhouse.user.UserVO;
 
-public class beotimmogForYouth implements loanProducts {
+public class wooriSmartLoan implements loanProducts {
 
-    //다자녀 우대금리 있음.  --> 처리 해야함
+    //부동산 중개업소를 통해 주택 임대차계약을 채결한 임차보증금의 5%이상을 지급한 세대주 혹은 세대원
 
-    boolean _isEnalbe = true;
+    float interestRate = -1.0f;
+    boolean _isEnable = true;
 
     @Override
     public String getProductName() {
-        return "버팀목 - 청년";
+        return "우리 스마트 전세론(서울보증)";
     }
 
     @Override
     public boolean isEnable() {
-        return false;
+        return _isEnable;
     }
 
     @Override
     public void setUserData(UserVO user) {
-
-        if( user.age < 19 && user.age >= 25 &&    // 19세 이상 25세 미만
-                user.hasHouse &&   // 무주택
-                user.salary > 5000 &&   // 연봉 5000 이하
-                user.property > 28000 ) //자산 2.8억 이하
-           {
-                _isEnalbe = false;
-                return;
-            }
+        interestRate = 3.75f;
     }
 
     @Override
@@ -43,7 +36,7 @@ public class beotimmogForYouth implements loanProducts {
 
     @Override
     public int getLimit() {
-        return 3500;
+        return 50000;
     }
 
     @Override
