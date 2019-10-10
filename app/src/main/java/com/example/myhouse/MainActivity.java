@@ -31,6 +31,7 @@ import android.view.MenuItem;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         new Thread() {
             public void run() {
-                getLocation("단구동 1684-1");
+                ArrayList list = getLocation("단구동 1684-1");
             }
         }.start();
 
@@ -147,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
 //            Log.d("토큰", token);
 //        }
 //    };
-    
+
+
 
 }

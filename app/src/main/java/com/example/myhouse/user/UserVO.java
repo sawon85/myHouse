@@ -19,5 +19,6 @@ public class UserVO {
     public int property; //자산
     public int deposit; //보증금
     public int age;
+    public double financialCostBurdenRatio; //금융비용부담율
 
 }
