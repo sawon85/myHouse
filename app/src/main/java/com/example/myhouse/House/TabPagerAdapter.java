@@ -4,39 +4,28 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import java.util.ArrayList;
+
 public class TabPagerAdapter extends FragmentStatePagerAdapter {
 
 
-    private int tabCount;
+    ArrayList<Fragment> fList;
 
-    public TabPagerAdapter(FragmentManager fragmentManager, int tabCount)
+
+    public TabPagerAdapter(FragmentManager fragmentManager, ArrayList<Fragment> fList)
     {
         super(fragmentManager);
-        this.tabCount = tabCount;
+        this.fList = fList;
     }
 
 
     @Override
     public Fragment getItem(int position) {
-        switch (position)
-        {
-            case 0:
-                //ClassDetailIntroduction classDetailIntroduction = new ClassDetailIntroduction();
-              /*  Bundle bundle = new Bundle();
-                bundle.putString("desc",);
-                classDetailIntroduction.setArguments(bundle);*/
-                //return classDetailIntroduction;
-            case 1:
-                //ClassDetailReview classDetailReview = new ClassDetailReview();
-                ///return classDetailReview;
-
-                default :
-                    return null;
-        }
+        return fList.get(position);
     }
 
     @Override
     public int getCount() {
-        return tabCount;
+        return fList.size();
     }
 }

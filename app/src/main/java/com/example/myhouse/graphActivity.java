@@ -7,9 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.myhouse.Card.CardAnalysis;
-import com.example.myhouse.user.UserConstant;
 import com.example.myhouse.user.UserVO;
-import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.PieData;
@@ -79,10 +77,12 @@ public class graphActivity extends AppCompatActivity {
         yValues.add(new PieEntry(UserVO.getInstance().cardData[CardAnalysis.Care],"의료"));
         yValues.add(new PieEntry(UserVO.getInstance().cardData[CardAnalysis.Study],"교육비"));
         yValues.add(new PieEntry(UserVO.getInstance().cardData[CardAnalysis.Traffic],"교통"));
-        yValues.add(new PieEntry(UserVO.getInstance().cardData[CardAnalysis.Beauty],"미용"));
+        yValues.add(new PieEntry(UserVO.getInstance().cardData[CardAnalysis.Service],"개인 서비스"));
         yValues.add(new PieEntry(UserVO.getInstance().cardData[CardAnalysis.Mart],"마트, 편의점"));
         yValues.add(new PieEntry(UserVO.getInstance().cardData[CardAnalysis.Online],"온라"));
         yValues.add(new PieEntry(UserVO.getInstance().cardData[CardAnalysis.Health],"헬스"));
+        yValues.add(new PieEntry(UserVO.getInstance().cardData[CardAnalysis.Beauty],"미용"));
+        yValues.add(new PieEntry(UserVO.getInstance().cardData[CardAnalysis.Culture],"문화"));
 
         Description description = new Description();
         description.setText("개인 지출"); //라벨

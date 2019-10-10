@@ -3,6 +3,7 @@ package com.example.myhouse.CardApi.util;
 import android.util.Log;
 
 import com.example.myhouse.AppManager;
+import com.example.myhouse.user.UserVO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -322,7 +323,6 @@ public class AccountTest {
 
 		// API 요청
 		String result = ApiRequest.reqeust(urlPath, bodyMap);
-		AppManager.getInstance().result = result;
 
 		// 응답결과 확인
 		System.out.println(result);
@@ -331,35 +331,40 @@ public class AccountTest {
 		JSONObject jsonObject;
 
 		try{
-			ObjectMapper mapper = new ObjectMapper();
 			jsonObject = (JSONObject) jsonParser.parse(AppManager.getInstance().result);
 			JSONObject jsonObject1= (JSONObject) jsonObject.get("data");
-			JSONArray jsonArray1 = (JSONArray) jsonObject1.get("resDepositTrust");
+			JSONArray jsonArray1 = (JSONArray) jsonObject1.get("resLoan");
 			JSONObject objectInArray;
 			AppManager.getInstance().account = new ArrayList<String>();
-			for( int i = 0; i < jsonArray1.size(); i++) {
+			if(jsonArray1 != null)
+				if(!jsonArray1.isEmpty()) {
+					for (int i = 0; i < jsonArray1.size(); i++) {
 
-				objectInArray = (JSONObject) jsonArray1.get(i);
-				String account = (String) objectInArray.get("resAccount");
-				AppManager.getInstance().account.add(account);
-				System.out.println(account);
+						objectInArray = (JSONObject) jsonArray1.get(i);
+						String account = (String) objectInArray.get("resAccount");
+						AppManager.getInstance().account.add(account);
+						System.out.println(account);
 
-				String urlPath2 = CommonConstant.getRequestDomain() + CommonConstant.KR_BK_1_P_004;
-				HashMap<String, Object> bodyMap2 = new HashMap<String, Object>();
-				bodyMap2.put("connectedId", "");    // 엔드유저의 은행/카드사 계정 등록 후 발급받은 커넥티드아이디 예시
-				bodyMap2.put("organization", "0011");
-				bodyMap2.put("account", account);
-				bodyMap2.put("startDate", "20000101");
-				bodyMap2.put("endDate", "20191010");
-				bodyMap2.put("orderBy", "0");
+						String urlPath2 = "https://api.codef.io/v1/kr/bank/p/loan/transaction-list";
+						HashMap<String, Object> bodyMap2 = new HashMap<String, Object>();
+						bodyMap2.put("connectedId", "9uZVOm6FQky8pYzb.FSlqR");    // 엔드유저의 은행/카드사 계정 등록 후 발급받은 커넥티드아이디 예시
+						bodyMap2.put("organization", "0011");
+						bodyMap2.put("account", account);
+						bodyMap2.put("startDate", "20000101");
+						bodyMap2.put("endDate", "20191010");
+						bodyMap2.put("orderBy", "0");
 
-				result = ApiRequest.reqeust(urlPath2, bodyMap2);
-				AppManager.getInstance().result = result;
+						result = ApiRequest.reqeust(urlPath2, bodyMap2);
 
-				// 응답결과 확인
-				System.out.println(result);
+						JSONObject jsonObject2 = (JSONObject) jsonObject.get("data");
+						UserVO.getInstance().loanResRate.add(Double.parseDouble((String) jsonObject2.get("resRate")));
+						UserVO.getInstance().resLoanBalance.add(Integer.parseInt((String) jsonObject2.get("resLoanBalance")));
 
-			}
+						// 응답결과 확인
+						System.out.println(result);
+
+					}
+				}
 
 		} catch (ParseException e) {
 			e.printStackTrace();
