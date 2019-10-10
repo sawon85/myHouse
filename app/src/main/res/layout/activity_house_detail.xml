@@ -91,7 +91,7 @@
                                     android:src="@drawable/ic_edit_location_black_24dp" />
                                 <!-- 주소 -->
                                 <TextView
-                                    android:id="@+id/class_area_intent"
+                                    android:id="@+id/dong"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:background="#FFFFFF"
@@ -157,7 +157,6 @@
 
         <Button
             android:layout_marginRight="2dp"
-            android:onClick="RentButtonClicked"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             android:text="대출 NO"

@@ -43,7 +43,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    Fragment_Map fragment_map;
+    public Fragment_Map fragment_map;
     Fragment_coupon fragment_coupon;
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
@@ -93,8 +93,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Intent intent = new Intent(this, HouseDetailActivity.class);
-        startActivity(intent);
     }
 
     public ArrayList getLocation(String address){

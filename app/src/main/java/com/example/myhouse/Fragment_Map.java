@@ -1,5 +1,6 @@
 package com.example.myhouse;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.myhouse.House.HouseDetailActivity;
 import com.example.myhouse.House.HouseVO;
 import com.example.myhouse.Network.NetworkConstants;
 import com.example.myhouse.Network.NetworkTask;
@@ -35,7 +37,7 @@ public class Fragment_Map extends Fragment  implements OnMapReadyCallback {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_map, container, false);
 
-        getHouseByDong("단구동");
+
         return view;
     }
 
@@ -56,8 +58,20 @@ public class Fragment_Map extends Fragment  implements OnMapReadyCallback {
     public void onMapReady(@NonNull NaverMap naverMap) {
 
         this.naverMap = naverMap;
-        infoWindow = getInfoWindow("정보 더 보기");
+        infoWindow = getInfoWindow("매물 정보 보기");
+        getHouseByDong("관설동");
 
+    }
+
+    public void setDongMarker()
+    {
+        HouseVO house;
+        for(int i=0; i<AppManager.getInstance().houseAdapter.houseVOs.size(); i++)
+        {
+            house = AppManager.getInstance().houseAdapter.houseVOs.get(i);
+            getInfowindowMarker(house.x,house.y,house.houseNumber,80,140, String.valueOf(i));
+            naverMap.setCameraPosition(new CameraPosition(new LatLng(house.x, house.y), 14.3));
+        }
     }
 
     private InfoWindow getInfoWindow(final String describe)  // infowindow
@@ -79,7 +93,7 @@ public class Fragment_Map extends Fragment  implements OnMapReadyCallback {
 
         });
     }
-    private Marker getInfowindowMarker(double latitude, double longitude, String caption, int width, int height, int resources, String[] information) {
+    private Marker getInfowindowMarker(double latitude, double longitude, String caption, int width, int height, String information) {
 
         Marker marker = getNormalMarker(latitude, longitude, caption, width, height);
         marker.setTag(information);
@@ -147,13 +161,13 @@ public class Fragment_Map extends Fragment  implements OnMapReadyCallback {
         public boolean onClick(@NonNull Overlay overlay) {
             InfoWindow infoWindow = (InfoWindow) overlay;
             Marker marker = infoWindow.getMarker();
-            String[] information = (String[]) marker.getTag();
+            String information = (String) marker.getTag();
 
-            /*
-            Intent intent = new Intent(getActivity(), Facilities_information.class);
-            intent.putExtra("information", information);
+
+            Intent intent = new Intent(getActivity(), HouseDetailActivity.class);
+            intent.putExtra("index", information);
             startActivity(intent);
-            */
+
 
             return true;
         }

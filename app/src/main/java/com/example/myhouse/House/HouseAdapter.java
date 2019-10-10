@@ -8,7 +8,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class HouseAdapter extends BaseAdapter {
-    ArrayList<HouseVO> houseVOs;
+    public ArrayList<HouseVO> houseVOs;
 
     public HouseAdapter(){
         houseVOs = new ArrayList<>();

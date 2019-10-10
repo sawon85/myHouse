@@ -123,7 +123,10 @@ public class NetworkTask extends AsyncTask<Void, Void, String> {
                                 HouseAdapter houseAdapter = new HouseAdapter(houseVOS);
                                 AppManager.getInstance().houseAdapter = houseAdapter;
                                 Log.d("앱매니저 이름", ((HouseVO)AppManager.getInstance().houseAdapter.getItem(0)).name);
+                                ((MainActivity) context).fragment_map.setDongMarker();
                             }
+
+
                         } else if (real_result.equals("fail1")) {
                             Toast.makeText(this.context, "실패하였습니다.", Toast.LENGTH_LONG).show();
                         }
