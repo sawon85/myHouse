@@ -52,7 +52,18 @@ public class CommonConstant {
 	public static final String ADD_ACCOUNT = "/v1/account/add";            									// 계정 추가			
 	public static final String UPDATE_ACCOUNT = "/v1/account/update";            							// 계정 수정			
 	public static final String DELETE_ACCOUNT = "/v1/account/delete";            							// 계정 삭제			
-	
+
+	public static final String BK_NH = "0011";
+	public static final String BK_KB = "0004";
+	public static final String BK_SH = "0088";
+	public static final String BK_URI = "0020";
+
+	public static final String CD_NH = "0304";
+	public static final String CD_KB = "0301";
+	public static final String CD_SH = "0306";
+	public static final String CD_SAM = "0303";
+
+
 	/**
 	 * API 요청 도메인 반환
 	 * @return

@@ -149,7 +149,7 @@ public class Fragment_Map extends Fragment  implements OnMapReadyCallback {
     }
 
     public void getHouseByDong(String dong){
-        String url = "http://106.10.35.170/ImportHomeList.php";
+        String url = "http://106.10.35.170/Hackaton/ImportHomeList.php";
         String dataStr = "dong=" + dong;
         NetworkTask networkTask = new NetworkTask(this.getContext(), url, dataStr, NetworkConstants.getHouseByDong);
         networkTask.execute();
@@ -167,7 +167,6 @@ public class Fragment_Map extends Fragment  implements OnMapReadyCallback {
             Intent intent = new Intent(getActivity(), HouseDetailActivity.class);
             intent.putExtra("index", information);
             startActivity(intent);
-
 
             return true;
         }
