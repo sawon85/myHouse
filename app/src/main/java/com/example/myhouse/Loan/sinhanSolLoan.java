@@ -4,8 +4,8 @@ import com.example.myhouse.user.UserVO;
 
 public class sinhanSolLoan implements loanProducts{
 
-    //부동산 중개업소를 통해 주택 임대차계약을 채결한 임차보증금의 5%이상을 지급한 고객
-    //현재 직장에서 1년 이상 근무한 직장인 혹은 개인사업자
+    // 부동산 중개업소를 통해 주택 임대차계약을 채결한 임차보증금의 5%이상을 지급한 고객
+    // 현재 직장에서 1년 이상 근무한 직장인 혹은 개인사업자
 
     float interestRate = -1.0f;
     boolean _isEnable = true;

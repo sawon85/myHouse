@@ -4,8 +4,8 @@ import com.example.myhouse.user.UserVO;
 
 public class sinhanForYouthLoan implements loanProducts {
 
-    //19-34세 무주택자
-    //임차보증금 5% 지급, 연소득 7천 이하, 보증금 5억 이하
+    // 19-34세 무주택자
+    // 임차보증금 5% 지급, 연소득 7천 이하, 보증금 5억 이하
 
     float interestRate = -1.0f;
     boolean _isEnable = true;
