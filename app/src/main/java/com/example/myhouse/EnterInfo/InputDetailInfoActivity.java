@@ -78,7 +78,7 @@ public class InputDetailInfoActivity extends AppCompatActivity {
         SharedPreferences preferences = InputDetailInfoActivity.this.getSharedPreferences("preferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor user_editor = preferences.edit();
 
-        user_editor.putString("finish", "finish");
+        user_editor.putString("finish1", "finish1");
         user_editor.commit();
         Intent intent = new Intent(InputDetailInfoActivity.this, MainActivity.class);
         startActivity(intent);

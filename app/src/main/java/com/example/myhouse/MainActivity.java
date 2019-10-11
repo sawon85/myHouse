@@ -67,12 +67,14 @@ public class MainActivity extends AppCompatActivity {
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         SharedPreferences preferences = this.getSharedPreferences("preferences", Context.MODE_PRIVATE);
-        String finish = preferences.getString("finish","");
+        String finish = preferences.getString("finish1","");
         Log.d("이름", finish);
         if( finish.isEmpty() ){
             Intent intent = new Intent(this, EnterInfoActivity.class);
             startActivity(intent);
         }
+
+        
 
         fragment_map = new Fragment_Map();
         // fragment_coupon = new Fragment_coupon();
