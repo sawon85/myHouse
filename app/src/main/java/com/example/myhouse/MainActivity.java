@@ -5,24 +5,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.example.myhouse.House.HouseDetailActivity;
-import com.example.myhouse.user.UserVO;
+import com.example.myhouse.EnterInfo.EnterInfoActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.api.client.json.Json;
-import com.google.gson.JsonObject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,7 +26,6 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -74,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         SharedPreferences preferences = this.getSharedPreferences("preferences", Context.MODE_PRIVATE);
-        String name = preferences.getString("additionalInput","");
-        Log.d("이름", name);
-        if( name.isEmpty() ){
+        String finish = preferences.getString("finish","");
+        Log.d("이름", finish);
+        if( finish.isEmpty() ){
             Intent intent = new Intent(this, EnterInfoActivity.class);
             startActivity(intent);
         }
@@ -91,10 +84,8 @@ public class MainActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.card)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(getApplication(), graphActivity.class);
                 startActivity(intent);
-
             }
         });
     }

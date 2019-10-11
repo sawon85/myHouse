@@ -1,4 +1,5 @@
 package com.example.myhouse.Loan;
+import com.example.myhouse.user.UserConstant;
 import com.example.myhouse.user.UserVO;
 
 public class beotimmogForSmallBusiness implements loanProducts {
@@ -20,8 +21,8 @@ public class beotimmogForSmallBusiness implements loanProducts {
     public void setUserData(UserVO user) {
 
             if( user.hasHouse ||                            // 세대원 모두 무주택
-                (user.doesMarry && user.salary <= 5000) ||      // 부부합산 5000만원이하
-                (!user.doesMarry && user.salary <= 3500) ||     // 단독세대주 3500만원이하
+                (user.marryState != UserConstant.notMarried && user.salary <= 5000) ||      // 부부합산 5000만원이하
+                (user.marryState == UserConstant.notMarried && user.salary <= 3500) ||     // 단독세대주 3500만원이하
                 user.property <= 28000 ||                        // 순 자산 2.8억 이하
                 user.age <= 34 )                                 //만 34세 ===> 현역 39세
             {

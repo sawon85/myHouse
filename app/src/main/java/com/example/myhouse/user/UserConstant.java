@@ -12,10 +12,12 @@ public class UserConstant {
     public static final int jobSeeker = 0;   //취업준비생
     public static final int smallBusinessMan = 1;
     public static final int largeBusinessMan = 2;
+    public static final int businessCEO = 3;
 
     ///결혼
-    public static final int married = 0;
-    public static final int notMarried = 1;
+    public static final int notMarried = 0;
+    public static final int newlyMarried = 1;
+    public static final int married = 2;
 
     ///주택 유무
     public static final boolean notHaveHouse = false;

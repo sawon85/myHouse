@@ -14,15 +14,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EnterInfoActivity"></activity>
-
+        <activity android:name=".EnterInfo.InputDetailInfoActivity"></activity>
+        <activity android:name=".EnterInfo.InputCertificatePasswordActivity" />
+        <activity android:name=".EnterInfo.EnterInfoActivity" />
         <activity android:name=".House.HouseDetailActivity" />
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="5phvyfpjfq" />
 
-        <activity android:name=".folderActivity" />
+        <activity android:name=".EnterInfo.folderActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

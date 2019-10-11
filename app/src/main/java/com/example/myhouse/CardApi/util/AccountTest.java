@@ -51,8 +51,14 @@ public class AccountTest {
 
 	String keyFileEncoded;
 	String derFileEncoded;
+	String password;
+	String birth;
 	ObjectMapper mapper = new ObjectMapper();
 
+	public AccountTest(String password, String birth){
+		this.password = password;
+		this.birth = birth;
+	}
 	@Test  
 	@Ignore
 	public void create(String businessType, String code, ArrayList<String> idList) throws IOException, InterruptedException, ParseException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
@@ -70,7 +76,7 @@ public class AccountTest {
 		accountMap1.put("organization",	code);
 		accountMap1.put("loginType",  	"0");
 		
-		String password1 = "";
+		String password1 = password;
 		Log.d("errrrrr", "");
 		accountMap1.put("password",  	RSAUtil.encryptRSA(password1, CommonConstant.PUBLIC_KEY));	/**	password RSA encrypt */
 
@@ -137,7 +143,7 @@ public class AccountTest {
 		HashMap<String, Object> bodyMap = new HashMap<String, Object>();
 		bodyMap.put("connectedId",	connectId);	// 엔드유저의 은행/카드사 계정 등록 후 발급받은 커넥티드아이디 예시
 		bodyMap.put("organization",	code);
-		bodyMap.put("birthDate",	"19951208");
+		bodyMap.put("birthDate",	birth);
 		bodyMap.put("startDate", "20181101");
 		bodyMap.put("endDate",	"20190930");
 		bodyMap.put("orderBy",		"1");

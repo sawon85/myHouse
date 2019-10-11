@@ -15,4 +15,38 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <string-array name="Job_Spinner_Items">
+        <item>미취업</item>
+        <item>중소기업 재직</item>
+        <item>대기업 재직</item>
+        <item>개인사업</item>
+    </string-array>
+
+    <string-array name="Marry_Spinner_Items">
+        <item>미혼</item>
+        <item>신혼(7년 이내)</item>
+        <item>기혼</item>
+    </string-array>
+
+    <string-array name="Children_Spinner_Items">
+        <item>0명</item>
+        <item>1명</item>
+        <item>2명</item>
+        <item>3명 이상</item>
+    </string-array>
+
+    <string-array name="Credit_Spinner_Items">
+        <item>1등급</item>
+        <item>2등급</item>
+        <item>3등급</item>
+        <item>4등급</item>
+        <item>5등급</item>
+        <item>6등급</item>
+        <item>7등급</item>
+        <item>8등급</item>
+        <item>9등급</item>
+        <item>10등급</item>
+
+    </string-array>
 </resources>

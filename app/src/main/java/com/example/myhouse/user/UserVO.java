@@ -18,13 +18,18 @@ public class UserVO {
     public int[] cardData = new int[CardAnalysis.MAXIMUM];
 
     public boolean hasHouse;  // 갖고잇는 주택
-    public boolean doesMarry;    // 결혼 유무
+    public int marryState;    // 결혼 유무
     public boolean isNewRecruits;
-    
+    public int jobState; //미취업, 중소기업, 대기업, 개인사업
     public int salary; //연봉
     public int property; //자산
     public int deposit; //보증금
     public int age;
+    public String name; //이름
+    public String birth; //생년월일 8자리
+    public int childrenNumber; //자식 수
+    public int resLoan; //남은 부채
+    public int credit;      //신용등급
     public double financialCostBurdenRatio; //금융비용부담율
 
     UserVO()

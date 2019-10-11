@@ -1,4 +1,4 @@
-package com.example.myhouse;
+package com.example.myhouse.EnterInfo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.myhouse.R;
+import com.example.myhouse.user.UserVO;
+
+import java.util.Calendar;
 
 public class EnterInfoActivity extends AppCompatActivity {
     CheckBox checkBox1;
@@ -63,10 +69,35 @@ public class EnterInfoActivity extends AppCompatActivity {
 
         user_editor.putString("name", name);
         user_editor.putString("birth", birth);
+        UserVO.getInstance().name = name;
+        UserVO.getInstance().birth = birth;
+        UserVO.getInstance().age =
+                getAge(Integer.parseInt(birth.substring(0,4)), Integer.parseInt(birth.substring(4, 6)), Integer.parseInt(birth.substring(6, 8)));
 
         user_editor.commit();
 
         Intent intent = new Intent(this, folderActivity.class);
         startActivity(intent);
+    }
+
+    public int getAge(int birthYear, int birthMonth, int birthDay)
+    {
+        Calendar current = Calendar.getInstance();
+        int currentYear  = current.get(Calendar.YEAR);
+        int currentMonth = current.get(Calendar.MONTH) + 1;
+        int currentDay   = current.get(Calendar.DAY_OF_MONTH);
+
+        int age = currentYear - birthYear;
+        // 생일 안 지난 경우 -1
+        if (birthMonth * 100 + birthDay > currentMonth * 100 + currentDay)
+            age--;
+        Log.d("나이나이나이나이", age+"");
+        return age;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        this.finish();
     }
 }

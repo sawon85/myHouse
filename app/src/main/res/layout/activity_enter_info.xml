@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EnterInfoActivity">
+    tools:context=".EnterInfo.EnterInfoActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -49,8 +49,8 @@
                 <EditText android:id="@+id/input_birth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:hint="생년월일" />
+                    android:inputType="number"
+                    android:hint="생년월일 8자리" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>

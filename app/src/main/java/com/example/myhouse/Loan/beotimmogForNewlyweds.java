@@ -1,5 +1,6 @@
 package com.example.myhouse.Loan;
 
+import com.example.myhouse.user.UserConstant;
 import com.example.myhouse.user.UserVO;
 
 public class beotimmogForNewlyweds implements loanProducts {
@@ -17,7 +18,7 @@ public class beotimmogForNewlyweds implements loanProducts {
 
     @Override
     public void setUserData(UserVO user) {
-        if( !user.doesMarry ){
+        if( user.marryState != UserConstant.newlyMarried){
             _isEnable = false;
             return;
         }
