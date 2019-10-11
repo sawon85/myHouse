@@ -14,10 +14,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".EnterInfo.InputDetailInfoActivity"></activity>
         <activity android:name=".EnterInfo.InputCertificatePasswordActivity" />
         <activity android:name=".EnterInfo.EnterInfoActivity" />
+
+        <activity android:name=".Information"
+            android:theme="@style/Theme.MyDialog"
+            >
+        </activity>
+        <activity android:name=".graphActivity" />
         <activity android:name=".House.HouseDetailActivity" />
+        <activity android:name=".WebViewActivity" />
+
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
