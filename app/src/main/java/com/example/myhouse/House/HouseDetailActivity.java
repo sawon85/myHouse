@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -17,6 +18,8 @@ import android.widget.TextView;
 
 import com.example.myhouse.AppManager;
 import com.example.myhouse.R;
+import com.example.myhouse.WebViewActivity;
+import com.example.myhouse.graphActivity;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -69,6 +72,13 @@ public class HouseDetailActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.class_tabs);
 
         viewPager = findViewById(R.id.container_class);
+        viewPager.setOnTouchListener(new ViewPager.OnTouchListener(){
+
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return false;
+            }
+        });
 
         TabPagerAdapter tabPagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), fList);
         viewPager.setAdapter(tabPagerAdapter);
@@ -115,5 +125,9 @@ public class HouseDetailActivity extends AppCompatActivity {
 
 
     public void CounselingRequest(View view) {
+
+        Intent intent = new Intent(getApplication(), WebViewActivity.class);
+        intent.putExtra("URLString", "http://naver.com");
+        startActivity(intent);
     }
 }
