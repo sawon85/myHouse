@@ -35,4 +35,11 @@ public class UserVO {
     // 대출
     public ArrayList<Double> loanResRate = new ArrayList<>();  //이율
     public ArrayList<Integer> resLoanBalance = new ArrayList<>(); // 대출 잔액 //단위 : 1원
+
+
+
+    public ArrayList<String> BKconnectedID = new ArrayList<>();
+    public ArrayList<String> CDconnectedID = new ArrayList<>();
+
+    public ArrayList<String> cardResult = new ArrayList<>();
 }

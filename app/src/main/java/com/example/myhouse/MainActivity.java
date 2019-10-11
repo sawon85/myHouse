@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frame_container, fragment_map).commit();
 
+
         ((Button) findViewById(R.id.card)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,8 +97,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     public ArrayList getLocation(String address){

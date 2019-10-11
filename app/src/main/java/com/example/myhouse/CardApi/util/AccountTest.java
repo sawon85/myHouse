@@ -51,10 +51,11 @@ public class AccountTest {
 
 	String keyFileEncoded;
 	String derFileEncoded;
+	ObjectMapper mapper = new ObjectMapper();
 
 	@Test  
 	@Ignore
-	public void create() throws IOException, InterruptedException, ParseException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
+	public void create(String businessType, String code, ArrayList<String> idList) throws IOException, InterruptedException, ParseException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
 		/// 요청 URL 설정
 		String urlPath = CommonConstant.API_DOMAIN + CommonConstant.CREATE_ACCOUNT;
 		
@@ -64,9 +65,9 @@ public class AccountTest {
 
 		HashMap<String, Object> accountMap1 = new HashMap<String, Object>();
 		accountMap1.put("countryCode",	"KR");
-		accountMap1.put("businessType",	"BK");
+		accountMap1.put("businessType",	businessType);
 		accountMap1.put("clientType",  	"P");
-		accountMap1.put("organization",	"0306");
+		accountMap1.put("organization",	code);
 		accountMap1.put("loginType",  	"0");
 		
 		String password1 = "";
@@ -94,9 +95,27 @@ public class AccountTest {
 		// API 요청
 		System.out.println("요청");
 		String result = ApiRequest.reqeust(urlPath, bodyMap);
+
+
+		JSONParser jsonParser = new JSONParser();
+		JSONObject jsonObject;
+
+		try {
+			jsonObject = (JSONObject) jsonParser.parse(result);
+			JSONObject jsonObject1 = (JSONObject) jsonObject.get("data");
+			String connectedID = (String) jsonObject1.get("connectedId");
+			System.out.println(connectedID);
+
+			if(connectedID == null) idList.add("0");
+			else idList.add(connectedID);
+
+		} catch (Exception e) {
+
+			System.out.println("ERRR");
+		}
+
 		System.out.println("완료");
 		// 응답결과 확인
-		System.out.println(result);
 	}
 	
 	/**	
@@ -108,15 +127,17 @@ public class AccountTest {
 	 */
 	@Test 
 	@Ignore
-	public void list() throws IOException, InterruptedException, ParseException{
+	public void list(String connectId, String code) throws IOException, InterruptedException, ParseException{
 		// 요청 URL 설정
+		if(connectId == "0") return;
+
 		String urlPath = CommonConstant.getRequestDomain()  + CommonConstant.KR_CD_P_002;
 		
 		// 요청 파라미터 설정 시작
 		HashMap<String, Object> bodyMap = new HashMap<String, Object>();
-		bodyMap.put("connectedId",	"4UHMTo2f4o8aVH7YKMCloa");	// 엔드유저의 은행/카드사 계정 등록 후 발급받은 커넥티드아이디 예시
-		bodyMap.put("organization",	"0306");
-		bodyMap.put("birthDate",	"19980619");
+		bodyMap.put("connectedId",	connectId);	// 엔드유저의 은행/카드사 계정 등록 후 발급받은 커넥티드아이디 예시
+		bodyMap.put("organization",	code);
+		bodyMap.put("birthDate",	"19951208");
 		bodyMap.put("startDate", "20181101");
 		bodyMap.put("endDate",	"20190930");
 		bodyMap.put("orderBy",		"1");
@@ -127,11 +148,10 @@ public class AccountTest {
 		
 		// API 요청
 		String result = ApiRequest.reqeust(urlPath, bodyMap);
-		AppManager.getInstance().result = result;
-
+		UserVO.getInstance().cardResult.add(result);
 
 		// 응답결과 확인
-		System.out.println(result);
+
 	}
 
 	/**	
@@ -312,14 +332,14 @@ public class AccountTest {
 	 */
 	@Test
 	@Ignore
-	public void LoanList() throws IOException, InterruptedException, ParseException{
+	public void LoanList(String connectId, String code) throws IOException, InterruptedException, ParseException{
 		// 요청 URL 설정
 		String urlPath = CommonConstant.getRequestDomain()  + CommonConstant.KR_BK_1_P_001;
 
 		// 요청 파라미터 설정 시작
 		HashMap<String, Object> bodyMap = new HashMap<String, Object>();
-		bodyMap.put("connectedId",	"9uZVOm6FQky8pYzb.FSlqR");	// 엔드유저의 은행/카드사 계정 등록 후 발급받은 커넥티드아이디 예시
-		bodyMap.put("organization",	"0011");
+		bodyMap.put("connectedId",	connectId);	// 엔드유저의 은행/카드사 계정 등록 후 발급받은 커넥티드아이디 예시
+		bodyMap.put("organization", code);
 
 		// API 요청
 		String result = ApiRequest.reqeust(urlPath, bodyMap);

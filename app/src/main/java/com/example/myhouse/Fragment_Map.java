@@ -168,7 +168,6 @@ public class Fragment_Map extends Fragment  implements OnMapReadyCallback {
             intent.putExtra("index", information);
             startActivity(intent);
 
-
             return true;
         }
     }

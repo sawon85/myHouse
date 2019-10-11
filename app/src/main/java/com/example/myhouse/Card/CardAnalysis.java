@@ -30,6 +30,7 @@ public class CardAnalysis {
         if(isCultureString(shopName)) return Culture;
         if(isBeautyString(shopName)) return Beauty;
         if(isHealthString(shopName)) return Health;
+        if(isFoodString(shopName)) return Food;
 
         Log.d("shop:",shopName);
         return Nothing;
@@ -86,7 +87,8 @@ public class CardAnalysis {
                 shopName.contains("지에스") ||
                 shopName.contains("미니스") ||
                 shopName.contains("자판기") ||
-                shopName.contains("농산")
+                shopName.contains("농산") ||
+                shopName.contains("아울렛")
         )
             return true;
 
@@ -99,7 +101,8 @@ public class CardAnalysis {
                 shopName.contains("인터파크") ||
                 shopName.contains("온라인") ||
                 shopName.contains("마켓")  ||
-                shopName.contains("카카오")
+                shopName.contains("카카오") ||
+                shopName.contains("네이버")
 
         )
             return true;
@@ -145,7 +148,9 @@ public class CardAnalysis {
                 shopName.contains("버스") ||
                 shopName.contains("택시") ||
                 shopName.contains("교통")||
-                shopName.contains("티머")
+                shopName.contains("티머") ||
+                shopName.contains("주유") ||
+                shopName.contains("하철")
         )
             return true;
 
@@ -225,7 +230,13 @@ public class CardAnalysis {
                 shopName.contains("이자") ||
                 shopName.contains("맘스") ||
                 shopName.contains("아웃") ||
-                shopName.contains("빕스")
+                shopName.contains("빕스") ||
+                shopName.contains("양꼬치") ||
+                shopName.contains("핫도") ||
+                shopName.contains("맛닭꼬") ||
+                shopName.contains("배달") ||
+                shopName.contains("김치") ||
+                shopName.contains("찌개")
 
         )
             return true;

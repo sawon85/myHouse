@@ -33,23 +33,26 @@ public class graphActivity extends AppCompatActivity {
         setContentView(R.layout.activity_graph);
 
         JSONParser jsonParser = new JSONParser();
-        JSONObject jsonObject;
 
-        try {
+        CardAnalysis cardAnalysis = new CardAnalysis();
 
-            jsonObject = (JSONObject) jsonParser.parse(AppManager.getInstance().result);
-            JSONArray jsonArray1 = (JSONArray) jsonObject.get("data");
-            CardAnalysis cardAnalysis = new CardAnalysis();
-            JSONObject objectInArray;
-            for (int i = 0; i < jsonArray1.size(); i++) {
-                objectInArray = (JSONObject) jsonArray1.get(i);
-                if("KRW".equals((String)objectInArray.get("resAccountCurrency")))
-                    UserVO.getInstance().cardData[cardAnalysis.getShopType((String)objectInArray.get("resMemberStoreName"))]
-                            +=  Integer.parseInt((String)objectInArray.get("resUsedAmount"));
+        for(String result : UserVO.getInstance().cardResult) {
 
+            System.out.println(result);
+            try {
+
+                JSONObject jsonObject = (JSONObject) jsonParser.parse(result);
+                JSONArray jsonArray1 = (JSONArray) jsonObject.get("data");
+                JSONObject objectInArray;
+                for (int i = 0; i < jsonArray1.size(); i++) {
+                    objectInArray = (JSONObject) jsonArray1.get(i);
+                    if ("KRW".equals((String) objectInArray.get("resAccountCurrency")))
+                        UserVO.getInstance().cardData[cardAnalysis.getShopType((String) objectInArray.get("resMemberStoreName"))]
+                                += Integer.parseInt((String) objectInArray.get("resUsedAmount"));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (ParseException e) {
-            e.printStackTrace();
         }
 
         for (int i=0; i< CardAnalysis.MAXIMUM; i++)
