@@ -4,8 +4,8 @@ import com.example.myhouse.user.UserVO;
 
 public class NHForYouthLoan implements loanProducts {
 
-    //34세 이하 무주택 청년
-    //연소득 7000이하, 주택금융신용보증서 임차자금 보증이 가능한 자
+    // 34세 이하 무주택 청년
+    // 연소득 7000이하, 주택금융신용보증서 임차자금 보증이 가능한 자
     // 월세대출은 한도 월 50, 보증금 및 월세 동시 대출시 월세한도는 25
 
     float interestRate = -1.0f;

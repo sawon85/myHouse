@@ -1,12 +1,9 @@
 package com.example.myhouse;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import com.example.myhouse.Card.CardAnalysis;
-import com.example.myhouse.CardApi.CardAPITest;
-import com.example.myhouse.CardApi.util.CommonConstant;
-import com.example.myhouse.CardApi.util.RequestToken;
 
 import com.example.myhouse.House.HouseDetailActivity;
 import com.example.myhouse.user.UserVO;
@@ -75,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        SharedPreferences preferences = this.getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        String name = preferences.getString("additionalInput","");
+        Log.d("이름", name);
+        if( name.isEmpty() ){
+            Intent intent = new Intent(this, EnterInfoActivity.class);
+            startActivity(intent);
+        }
 
         fragment_map = new Fragment_Map();
         // fragment_coupon = new Fragment_coupon();
