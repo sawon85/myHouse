@@ -6,6 +6,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.myhouse.EnterInfo.EnterInfoActivity;
+import com.example.myhouse.Loan.NHForYouthLoan;
+import com.example.myhouse.Loan.beotimmogForMothlyRentLoan;
+import com.example.myhouse.Loan.beotimmogForNewlyweds;
+import com.example.myhouse.Loan.beotimmogForSmallBusiness;
+import com.example.myhouse.Loan.beotimmogForYouth;
+import com.example.myhouse.Loan.loanProducts;
+import com.example.myhouse.Loan.sinhanForYouthLoan;
+import com.example.myhouse.Loan.sinhanSolLoan;
+import com.example.myhouse.Loan.wooriSmartLoan;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -74,7 +83,16 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        
+        ArrayList<loanProducts> loanProducts = new ArrayList<>();
+        loanProducts.add(new beotimmogForMothlyRentLoan());
+        loanProducts.add(new beotimmogForNewlyweds());
+        loanProducts.add(new beotimmogForSmallBusiness());
+        loanProducts.add(new beotimmogForYouth());
+        loanProducts.add(new NHForYouthLoan());
+        loanProducts.add(new sinhanForYouthLoan());
+        loanProducts.add(new sinhanSolLoan());
+        loanProducts.add(new wooriSmartLoan());
+        AppManager.getInstance().loanProducts = loanProducts;
 
         fragment_map = new Fragment_Map();
         // fragment_coupon = new Fragment_coupon();

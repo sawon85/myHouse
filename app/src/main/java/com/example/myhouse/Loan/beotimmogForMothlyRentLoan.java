@@ -10,6 +10,7 @@ public class beotimmogForMothlyRentLoan implements loanProducts {
 
     boolean _isEnable = true;
     float interestRate = 2.5f;  // 금
+    public Boolean isRecommand = false;
 
     @Override
     public String getProductName() {
@@ -64,4 +65,15 @@ public class beotimmogForMothlyRentLoan implements loanProducts {
     public String getSpecialNote() {
         return null;
     }
+
+    @Override
+    public boolean isRecommanded() {
+        return isRecommand;
+    }
+
+    @Override
+    public void setRecommand(boolean recommand) {
+        isRecommand = recommand;
+    }
+
 }

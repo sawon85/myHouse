@@ -29,8 +29,6 @@
                 app:titleEnabled="false">
 
 
-
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -143,43 +141,6 @@
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
-    <!-- 예약 버튼 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_gravity="bottom"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        android:scrollbars="none"
-        android:visibility="visible"
-        android:weightSum="1"
-        android:layout_marginBottom="5dp">
-
-        <Button
-            android:layout_marginRight="2dp"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:text="대출 NO"
-            android:id="@+id/loan_button"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:background="#2222"
-            android:layout_weight="0.2"/>
-
-        <Button
-            android:id="@+id/class_reserve"
-            android:onClick="CounselingRequest"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:background="@color/colorPrimary"
-            android:text="공인중개사 상담 요청"
-            android:textColor="#FFFFFF"
-            android:textSize="16dp"
-            android:layout_weight="0.8"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"/>
-
-    </LinearLayout>
 
 
 </LinearLayout>

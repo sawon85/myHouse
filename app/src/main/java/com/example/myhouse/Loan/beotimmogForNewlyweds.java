@@ -7,7 +7,7 @@ public class beotimmogForNewlyweds implements loanProducts {
 
     float interestRate = 2.5f;
     boolean _isEnable = true;
-
+    public Boolean isRecommand = false;
     @Override
     public String getProductName() { return "버팀목 - 신혼부부"; }
 
@@ -82,4 +82,15 @@ public class beotimmogForNewlyweds implements loanProducts {
     public String getSpecialNote() {
         return null;
     }
+
+    @Override
+    public boolean isRecommanded() {
+        return isRecommand;
+    }
+
+    @Override
+    public void setRecommand(boolean recommand) {
+        isRecommand = recommand;
+    }
+
 }

@@ -19,4 +19,8 @@ public interface loanProducts {
     float getLimitPercent();
 
     String getSpecialNote();
+
+    boolean isRecommanded();
+
+    void setRecommand(boolean recommand);
 }

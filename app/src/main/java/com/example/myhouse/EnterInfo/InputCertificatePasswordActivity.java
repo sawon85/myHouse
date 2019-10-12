@@ -30,51 +30,51 @@ public class InputCertificatePasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                Log.d("ㅁㄴ이ㅓㄹㄴ아", "dhodaslkdfj");
-//                EditText password = findViewById(R.id.input_password_);
-//
-//                if(password.getText().toString().isEmpty()){
-//                    Toast.makeText(InputCertificatePasswordActivity.this, "비밀번호를 입력해 주세요", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-//
-//                new Thread() {
-//                    public void run() {
-//                        AccountTest accountTest = new AccountTest(password.getText().toString(), UserVO.getInstance().birth);
-//                        try {
-//                            accountTest.create("BK",CommonConstant.BK_NH, UserVO.getInstance().BKconnectedID);
-//                            accountTest.create("BK",CommonConstant.BK_KB, UserVO.getInstance().BKconnectedID);
-//                            accountTest.create("BK",CommonConstant.BK_SH, UserVO.getInstance().BKconnectedID);
-//                            accountTest.create("BK",CommonConstant.BK_URI, UserVO.getInstance().BKconnectedID);
-//
-//                            for(String connect : UserVO.getInstance().BKconnectedID)
-//                                System.out.println(connect);
-//
-//                            accountTest.create("CD", CommonConstant.CD_NH, UserVO.getInstance().CDconnectedID);
-//                            accountTest.create("CD",CommonConstant.CD_KB, UserVO.getInstance().CDconnectedID);
-//                            accountTest.create("CD",CommonConstant.CD_SH, UserVO.getInstance().CDconnectedID);
-//                            accountTest.create("CD",CommonConstant.CD_SAM, UserVO.getInstance().CDconnectedID);
-//
-//                            for(String connect : UserVO.getInstance().CDconnectedID)
-//                                System.out.println(connect);
-//
-//                            accountTest.list(UserVO.getInstance().CDconnectedID.get(0),CommonConstant.CD_NH);
-//                            accountTest.list(UserVO.getInstance().CDconnectedID.get(1),CommonConstant.CD_KB);
-//                            accountTest.list(UserVO.getInstance().CDconnectedID.get(2),CommonConstant.CD_SH);
-//                            accountTest.list(UserVO.getInstance().CDconnectedID.get(3),CommonConstant.CD_SAM);
-//
-//                            accountTest.list(UserVO.getInstance().BKconnectedID.get(0),CommonConstant.BK_NH);
-//                            accountTest.list(UserVO.getInstance().BKconnectedID.get(1),CommonConstant.BK_KB);
-//                            accountTest.list(UserVO.getInstance().BKconnectedID.get(2),CommonConstant.BK_SH);
-//                            accountTest.list(UserVO.getInstance().BKconnectedID.get(3),CommonConstant.BK_URI);
-//
-//                        } catch (
-//                                Exception e) {
-//                            Log.d("errrrrr", "Errrrrrrrrrrrrrr");
-//                        }
-//                        Intent intent = new Intent(InputCertificatePasswordActivity.this, InputDetailInfoActivity.class);
-//                        startActivity(intent);
-//                    }
-//                }.start();
+                EditText password = findViewById(R.id.input_password_);
+
+                if(password.getText().toString().isEmpty()){
+                    Toast.makeText(InputCertificatePasswordActivity.this, "비밀번호를 입력해 주세요", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                new Thread() {
+                    public void run() {
+                        AccountTest accountTest = new AccountTest(password.getText().toString(), UserVO.getInstance().birth);
+                        try {
+                            accountTest.create("BK",CommonConstant.BK_NH, UserVO.getInstance().BKconnectedID);
+                            accountTest.create("BK",CommonConstant.BK_KB, UserVO.getInstance().BKconnectedID);
+                            accountTest.create("BK",CommonConstant.BK_SH, UserVO.getInstance().BKconnectedID);
+                            accountTest.create("BK",CommonConstant.BK_URI, UserVO.getInstance().BKconnectedID);
+
+                            for(String connect : UserVO.getInstance().BKconnectedID)
+                                System.out.println(connect);
+
+                            accountTest.create("CD", CommonConstant.CD_NH, UserVO.getInstance().CDconnectedID);
+                            accountTest.create("CD",CommonConstant.CD_KB, UserVO.getInstance().CDconnectedID);
+                            accountTest.create("CD",CommonConstant.CD_SH, UserVO.getInstance().CDconnectedID);
+                            accountTest.create("CD",CommonConstant.CD_SAM, UserVO.getInstance().CDconnectedID);
+
+                            for(String connect : UserVO.getInstance().CDconnectedID)
+                                System.out.println(connect);
+
+                            accountTest.list(UserVO.getInstance().CDconnectedID.get(0),CommonConstant.CD_NH);
+                            accountTest.list(UserVO.getInstance().CDconnectedID.get(1),CommonConstant.CD_KB);
+                            accountTest.list(UserVO.getInstance().CDconnectedID.get(2),CommonConstant.CD_SH);
+                            accountTest.list(UserVO.getInstance().CDconnectedID.get(3),CommonConstant.CD_SAM);
+
+                            accountTest.list(UserVO.getInstance().BKconnectedID.get(0),CommonConstant.BK_NH);
+                            accountTest.list(UserVO.getInstance().BKconnectedID.get(1),CommonConstant.BK_KB);
+                            accountTest.list(UserVO.getInstance().BKconnectedID.get(2),CommonConstant.BK_SH);
+                            accountTest.list(UserVO.getInstance().BKconnectedID.get(3),CommonConstant.BK_URI);
+
+                        } catch (
+                                Exception e) {
+                            Log.d("errrrrr", "Errrrrrrrrrrrrrr");
+                        }
+                        Intent intent = new Intent(InputCertificatePasswordActivity.this, InputDetailInfoActivity.class);
+                        startActivity(intent);
+                    }
+                }.start();
                 Intent intent = new Intent(InputCertificatePasswordActivity.this, InputDetailInfoActivity.class);
                 startActivity(intent);
             }

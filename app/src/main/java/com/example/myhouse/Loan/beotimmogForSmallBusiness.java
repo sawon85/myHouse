@@ -6,6 +6,7 @@ public class beotimmogForSmallBusiness implements loanProducts {
 
     // 현역 나이 제한 나이 39세 처리 해야함. (만 34 ~ 39세일 경우)
     boolean _isEnalbe = true;
+    public Boolean isRecommand = false;
 
     @Override
     public String getProductName() {
@@ -56,5 +57,15 @@ public class beotimmogForSmallBusiness implements loanProducts {
     @Override
     public String getSpecialNote() {
         return null;
+    }
+
+    @Override
+    public boolean isRecommanded() {
+        return isRecommand;
+    }
+
+    @Override
+    public void setRecommand(boolean recommand) {
+        isRecommand = recommand;
     }
 }

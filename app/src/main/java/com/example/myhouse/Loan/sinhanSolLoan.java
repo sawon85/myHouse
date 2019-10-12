@@ -9,7 +9,7 @@ public class sinhanSolLoan implements loanProducts{
 
     float interestRate = -1.0f;
     boolean _isEnable = true;
-
+    public Boolean isRecommand = false;
 
     @Override
     public String getProductName() {
@@ -56,5 +56,15 @@ public class sinhanSolLoan implements loanProducts{
     @Override
     public String getSpecialNote() {
         return null;
+    }
+
+    @Override
+    public boolean isRecommanded() {
+        return isRecommand;
+    }
+
+    @Override
+    public void setRecommand(boolean recommand) {
+        isRecommand = recommand;
     }
 }

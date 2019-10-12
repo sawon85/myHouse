@@ -10,6 +10,7 @@ public class NHForYouthLoan implements loanProducts {
 
     float interestRate = -1.0f;
     boolean _isEnable = true;
+    public Boolean isRecommand = false;
 
 
     @Override
@@ -59,5 +60,15 @@ public class NHForYouthLoan implements loanProducts {
     @Override
     public String getSpecialNote() {
         return "주택금융신용보증서 임차자금 보증이 가능시 이용 가능";
+    }
+
+    @Override
+    public boolean isRecommanded() {
+        return isRecommand;
+    }
+
+    @Override
+    public void setRecommand(boolean recommand) {
+        isRecommand = recommand;
     }
 }
